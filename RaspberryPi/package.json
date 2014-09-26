@@ -1,0 +1,9 @@
+{
+    "name": "VlabsMotionSensor",
+    "description": "Server side for the motion sensor project",
+    "version": "0.0.1",
+    "dependencies": {
+        "serialport": "1.4.5",
+        "nodemailer": "1.3.0"
+    }
+}
