@@ -1,6 +1,6 @@
 module.exports = {
     transportLogin : '<your_gmail_adress>',
     transportPasswd : '<your_gmail_password>',
-    transportSender : 'Intrusion Detector <vlabsdetection@gmail.com>',
-    transportDestination: 'vlabsdetection@gmail.com'
+    transportSender : 'Intrusion Detector <your_email@gmail.com>',
+    transportDestination: 'your_email@gmail.com'
 }

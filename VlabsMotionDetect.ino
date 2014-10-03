@@ -165,11 +165,11 @@ void sendPicture()
   cam.reset();
 }
 
-/*
-  SerialEvent occurs whenever a new data comes in the
- hardware serial RX.  This routine is run between each
- time loop() runs, so using delay inside loop can delay
- response.  Multiple bytes of data may be available.
+/**
+ * Handle new data coming from hardware serial RX
+ * Reset boolean if \n is given
+ *
+ * @return void
  */
 void serialEvent() {
   while (Serial.available()) {
@@ -180,13 +180,3 @@ void serialEvent() {
     } 
   }
 }
-
-
-
-
-
-
-
-
-
-
