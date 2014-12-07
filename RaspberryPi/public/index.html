@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VlabsMotionSensor</title>
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header">
+        <h1>Détecteur de mouvement - Appareil photo connecté</h1>
+    </div>
+    <div id="main-container">
+        <div id="top-container">
+            <div id="picture-container">
+                <h2>Dernière image</h2>
+                <img src="" id="current-picture" />
+            </div>
+            <div id="console-container">
+                <h2>Sous le capot</h2>
+                <div id="console"></div>
+            </div>
+        </div>
+        <div id="footer">
+            <h2>Toutes les photos</h2>
+            <div id="photos-container"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var socket = io();
+            socket.on('console', function(data) {
+                data = (data == '.') ? data : data + '<br />';
+                $('#console').append(data);
+            });
+
+            socket.on('newFile', function(data) {
+                $('#photos-container').prepend('<img src="'+ $('#current-picture').attr('src') +'" class="thumb" />');
+                $('#current-picture').attr('src', data);
+            });
+
+            setInterval(function(){
+                $('#console').stop().animate({
+                    scrollTop: $("#console")[0].scrollHeight
+                }, 200);
+            }, 500);
+        });
+    </script>
+</body>
+</html>

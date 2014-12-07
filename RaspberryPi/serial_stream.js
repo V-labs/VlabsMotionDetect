@@ -4,7 +4,7 @@
 var fs = require('fs');
 
 function SerialStream(finishCallback, userOptions) {
-    this.filePath = 'images/picture' + Date.now() + '.jpg';
+    this.filePath = 'public/images/picture' + Date.now() + '.jpg';
     this.stream = fs.createWriteStream(this.filePath);
     this.previousBufferData = ''
     this.lastTwoDatas = '';

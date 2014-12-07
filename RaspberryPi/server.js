@@ -1,11 +1,16 @@
 /*jslint node: true */
 "use strict";
 
+require('./web_server');
+
 var com = require("serialport");
 var Stream = require('./serial_stream');
 var Mailer = require('./mailer');
+var Logguer = require('./logger');
 
-function app() {
+var emitter = require('./event_emitter');
+
+(function app() {
 
     var serialPort = new com.SerialPort("/dev/ttyACM0", {
         baudrate: 115200,
@@ -33,19 +38,21 @@ function app() {
                         mailer = new Mailer(restartCamera);
                     }
 
-                    console.log(data);
+                    Logguer.logEvent('console', data);
 
                     if(stream.isBeginOfFile(data)) {
-                        console.log('Switch parser');
+                        Logguer.logEvent('console', 'Switch parser');
                         serialPort.options.parser = com.parsers.raw;
                     }
 
                 } else {
                     process.stdout.write(".");
+                    Logguer.logEvent('console', '.');
                     if(stream.isEndOfFile(data)) {
                         var path = stream.getFilePath();
                         stream.finish();
                         mailer.sendMailWithFile(path);
+                        emitter.emit('newFile', path);
                     } else {
                         stream.write(data)
                     }
@@ -57,7 +64,7 @@ function app() {
     function resetParser() {
         serialPort.options.parser = com.parsers.readline('\r\n');
         console.log('');
-        console.log('Writed : '+ stream.receivedBytes +' bytes');
+        Logguer.logEvent('console', 'Writed : '+ stream.receivedBytes +' bytes');
 
         setTimeout(function() {
             stream = null;
@@ -65,11 +72,10 @@ function app() {
     };
 
     function restartCamera() {
-        console.log('Restart camera');
+        Logguer.logEvent('console', 'Restart camera');
 
         // end of transfer
         serialPort.write('\n');
     }
-}
 
-app();
+})();

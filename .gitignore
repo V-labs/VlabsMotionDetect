@@ -1,4 +1,4 @@
 .DS_Store
 .idea
 RaspberryPi/node_modules
-RaspberryPi/images/*
+RaspberryPi/public/images/*

@@ -35,8 +35,9 @@ void setup()
 void loop() 
 {
   if(isMotionDetected() == true) {
-    Serial.println("Motion detected! - Wait a little");
-    delay(2000);
+    //Serial.println("Motion detected! - Wait a little");
+    //delay(2000);
+    Serial.println("Motion detected!");
     takePicture();
   }
 }
@@ -114,7 +115,7 @@ void takePicture()
 {
   isHandlingPicture = true;
 
-  cam.setImageSize(VC0706_640x480);
+  cam.setImageSize(VC0706_320x240);
 
   Serial.println("Snap time");
 

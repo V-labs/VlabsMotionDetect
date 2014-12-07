@@ -18,6 +18,12 @@ function VlabsMailer(emailSentCallback) {
 VlabsMailer.prototype = {
     sendMailWithFile: function(pathOfFile)
     {
+        if(!config.useMailer)  {
+            this.callback();
+
+            return;
+        }
+
         var mailOptions = {
             from: config.transportSender,
             to: config.transportDestination,
