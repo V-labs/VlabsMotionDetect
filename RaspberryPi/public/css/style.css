@@ -1,3 +1,5 @@
+html,body{ min-height: 100%; height: 100%; }
+
 body {
     margin: 0;
     font-family: Arial;
@@ -24,7 +26,13 @@ h2 {
 }
 
 #main-container {
-    margin: 20px;
+    padding: 20px;
+    min-height: -moz-calc(100% - 73px);
+    min-height: -webkit-calc(100% - 73px);
+    min-height: calc(100% - 73px);
+    height: -moz-calc(100% - 73px);
+    height: -webkit-calc(100% - 73px);
+    height: calc(100% - 73px);
 }
 
 #top-container {
@@ -32,21 +40,24 @@ h2 {
 }
 
 #picture-container {
-    float: left;
-    width: 40%;
     border: 1px solid #000000;
+    max-height: 322px;
+    height: 100%;
 }
 
 #picture-container img {
     display: block;
-    margin: 20px auto;
+    max-width: 320px;
+    max-height: 240px;
+    width: 100%;
+    margin: 0 auto;
 }
 
+.picture-wrapper{ padding: 20px; }
+
 #console-container {
-    float: right;
-    width: 620px;
-    height: auto;
     border: 1px solid #000000;
+    height: 322px;
 }
 
 #console {
@@ -57,21 +68,38 @@ h2 {
     word-wrap: break-word;
     padding: 10px;
     margin: 10px;
+    height: 258px;
 }
 
 #footer {
     clear: both;
     margin-top: 20px;
     border: 1px solid #000000;
+    height: -moz-calc(100% - 342px);
+    height: -webkit-calc(100% - 342px);
+    height: calc(100% - 342px);
 }
 
 #photos-container {
     overflow-y: scroll;
-    height: 220px;
+    height: -moz-calc(100% - 42px);
+    height: -webkit-calc(100% - 42px);
+    height: calc(100% - 42px);
 }
 
 .thumb {
     width: 120px;
     float: left;
     margin: 10px;
+}
+
+@media screen and (max-width: 991px) {
+    #top-container .col-md-6{ margin-bottom: 15px; }
+    #top-container .col-md-6:last-child{ margin-bottom: 0; }
+
+    #main-container {
+        height: auto;
+    }
+
+    .thumb{ width: 96%; margin: 4%; }
 }

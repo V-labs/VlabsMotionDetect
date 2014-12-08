@@ -2,7 +2,13 @@
 <html>
 <head>
     <title>VlabsMotionSensor</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+
 </head>
 <body>
     <div id="header">
@@ -10,13 +16,21 @@
     </div>
     <div id="main-container">
         <div id="top-container">
-            <div id="picture-container">
-                <h2>Dernière image</h2>
-                <img src="" id="current-picture" />
-            </div>
-            <div id="console-container">
-                <h2>Sous le capot</h2>
-                <div id="console"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="picture-container">
+                        <h2>Dernière image</h2>
+                        <div class="picture-wrapper">
+                            <img src="images/nophoto.png" id="current-picture" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="console-container">
+                        <h2>Sous le capot</h2>
+                        <div id="console"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="footer">
