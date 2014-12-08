@@ -2,3 +2,4 @@
 .idea
 RaspberryPi/node_modules
 RaspberryPi/public/images/*
+!RaspberryPi/public/images/nophoto.png
